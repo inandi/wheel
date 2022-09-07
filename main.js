@@ -1,6 +1,143 @@
-
 (function ($) {
-    var venues = [{ "name": "1900 Mexican Grill", "type": "Mexican" }, { "name": "300 East", "type": "American/Upscale" }, { "name": "Angry Ale's", "type": "American/Pub " }, { "name": "Azteca", "type": "Mexican" }, { "name": "Bedder Bedder and Moore", "type": "Sandwiches, Salads, Soups" }, { "name": "Boading", "type": "Chinese" }, { "name": "Brazwell's Premium Pub", "type": "American/Pub " }, { "name": "Brio Tuscan Grille", "type": "Italian" }, { "name": "Brixx", "type": "Pizza/Salads" }, { "name": "Café at 6100", "type": "Home Cooking" }, { "name": "California Pizza Kitchen", "type": "Pizza/Salads" }, { "name": "Chick-Fil-A", "type": "Fast Food" }, { "name": "City Tavern", "type": "American/Upscale" }, { "name": "Copper", "type": "Indian" }, { "name": "Cowfish", "type": "Sushi" }, { "name": "Duckworth's", "type": "American/Pub " }, { "name": "Eddie's Place", "type": "American/Pub " }, { "name": "El Camino", "type": "Mexican" }, { "name": "Fairview Plaza Restaurant", "type": "Home Cooking" }, { "name": "Firebird's Wood Fired Grill", "type": "American/Upscale" }, { "name": "Firehouse Subs", "type": "Sandwiches, Salads, Soups" }, { "name": "Flying Biscuit", "type": "American/Fast" }, { "name": "Fuel", "type": "Pizza" }, { "name": "Good Food on Montford", "type": "American/Upscale" }, { "name": "Harper's Restaurant", "type": "American/Upscale" }, { "name": "Hawthorne's Pizza", "type": "Pizza/Italian" }, { "name": "Luisa's Brick Oven Pizza", "type": "Pizza/Italian" }, { "name": "Maverick Rock Taco", "type": "Mexican" }, { "name": "McAllister's", "type": "Sandwiches, Salads, Soups" }, { "name": "Mellow Mushroom", "type": "Pizza/Salads" }, { "name": "Moe's", "type": "Mexican" }, { "name": "Moosehead Grill", "type": "American/Pub " }, { "name": "Paco's Tacos and Tequila", "type": "Mexican" }, { "name": "Panera ", "type": "Sandwiches, Salads, Soups" }, { "name": "PF Chang's", "type": "Chinese" }, { "name": "Portofinos", "type": "Pizza/Italian" }, { "name": "Qdoba", "type": "Mexican" }, { "name": "Rooster's Wood Fire Kitchen", "type": "American/Upscale" }, { "name": "Rusty's Deli", "type": "Sandwiches, Salads, Soups" }, { "name": "Taco Bell", "type": "Fast Food" }, { "name": "Taco Mac", "type": "American/Pub " }, { "name": "Terrace Café", "type": "American/Upscale" }, { "name": "The Roasting Company", "type": "American/Fast" }, { "name": "Village Tavern", "type": "American/Upscale" }, { "name": "Which Wich?", "type": "Sandwiches, Salads, Soups" }, { "name": "Zack's Hamburgers", "type": "American/Fast" }];
+    var venues = [{
+        "name": "1900 Mexican Grill",
+        "type": "Mexican"
+    }, {
+        "name": "300 East",
+        "type": "American/Upscale"
+    }, {
+        "name": "Angry Ale's",
+        "type": "American/Pub "
+    }, {
+        "name": "Azteca",
+        "type": "Mexican"
+    }, {
+        "name": "Bedder Bedder and Moore",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "Boading",
+        "type": "Chinese"
+    }, {
+        "name": "Brazwell's Premium Pub",
+        "type": "American/Pub "
+    }, {
+        "name": "Brio Tuscan Grille",
+        "type": "Italian"
+    }, {
+        "name": "Brixx",
+        "type": "Pizza/Salads"
+    }, {
+        "name": "Café at 6100",
+        "type": "Home Cooking"
+    }, {
+        "name": "California Pizza Kitchen",
+        "type": "Pizza/Salads"
+    }, {
+        "name": "Chick-Fil-A",
+        "type": "Fast Food"
+    }, {
+        "name": "City Tavern",
+        "type": "American/Upscale"
+    }, {
+        "name": "Copper",
+        "type": "Indian"
+    }, {
+        "name": "Cowfish",
+        "type": "Sushi"
+    }, {
+        "name": "Duckworth's",
+        "type": "American/Pub "
+    }, {
+        "name": "Eddie's Place",
+        "type": "American/Pub "
+    }, {
+        "name": "El Camino",
+        "type": "Mexican"
+    }, {
+        "name": "Fairview Plaza Restaurant",
+        "type": "Home Cooking"
+    }, {
+        "name": "Firebird's Wood Fired Grill",
+        "type": "American/Upscale"
+    }, {
+        "name": "Firehouse Subs",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "Flying Biscuit",
+        "type": "American/Fast"
+    }, {
+        "name": "Fuel",
+        "type": "Pizza"
+    }, {
+        "name": "Good Food on Montford",
+        "type": "American/Upscale"
+    }, {
+        "name": "Harper's Restaurant",
+        "type": "American/Upscale"
+    }, {
+        "name": "Hawthorne's Pizza",
+        "type": "Pizza/Italian"
+    }, {
+        "name": "Luisa's Brick Oven Pizza",
+        "type": "Pizza/Italian"
+    }, {
+        "name": "Maverick Rock Taco",
+        "type": "Mexican"
+    }, {
+        "name": "McAllister's",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "Mellow Mushroom",
+        "type": "Pizza/Salads"
+    }, {
+        "name": "Moe's",
+        "type": "Mexican"
+    }, {
+        "name": "Moosehead Grill",
+        "type": "American/Pub "
+    }, {
+        "name": "Paco's Tacos and Tequila",
+        "type": "Mexican"
+    }, {
+        "name": "Panera ",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "PF Chang's",
+        "type": "Chinese"
+    }, {
+        "name": "Portofinos",
+        "type": "Pizza/Italian"
+    }, {
+        "name": "Qdoba",
+        "type": "Mexican"
+    }, {
+        "name": "Rooster's Wood Fire Kitchen",
+        "type": "American/Upscale"
+    }, {
+        "name": "Rusty's Deli",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "Taco Bell",
+        "type": "Fast Food"
+    }, {
+        "name": "Taco Mac",
+        "type": "American/Pub "
+    }, {
+        "name": "Terrace Café",
+        "type": "American/Upscale"
+    }, {
+        "name": "The Roasting Company",
+        "type": "American/Fast"
+    }, {
+        "name": "Village Tavern",
+        "type": "American/Upscale"
+    }, {
+        "name": "Which Wich?",
+        "type": "Sandwiches, Salads, Soups"
+    }, {
+        "name": "Zack's Hamburgers",
+        "type": "American/Fast"
+    }];
 
     // Helpers
     var blackHex = '#333',
@@ -81,12 +218,12 @@
 
             if (duration < wheel.upTime) {
                 progress = duration / wheel.upTime;
-                wheel.angleDelta = wheel.maxSpeed
-                    * Math.sin(progress * halfPI);
+                wheel.angleDelta = wheel.maxSpeed *
+                    Math.sin(progress * halfPI);
             } else {
                 progress = duration / wheel.downTime;
-                wheel.angleDelta = wheel.maxSpeed
-                    * Math.sin(progress * halfPI + halfPI);
+                wheel.angleDelta = wheel.maxSpeed *
+                    Math.sin(progress * halfPI + halfPI);
                 if (progress >= 1) {
                     finished = true;
                 }
@@ -102,7 +239,9 @@
                 wheel.timerHandle = 0;
                 wheel.angleDelta = 0;
 
-                if (console) { console.log((wheel.frames / duration * 1000) + " FPS"); }
+                if (console) {
+                    console.log((wheel.frames / duration * 1000) + " FPS");
+                }
             }
 
             // Display RPM
@@ -296,7 +435,9 @@
             $filterToggler = $('#filterToggle'),
             arrayUnique = function (a) {
                 return a.reduce(function (p, c) {
-                    if (p.indexOf(c) < 0) { p.push(c); }
+                    if (p.indexOf(c) < 0) {
+                        p.push(c);
+                    }
                     return p;
                 }, []);
             };
@@ -306,11 +447,11 @@
                 $("<li/>")
                     .append(
                         $("<input />").attr({
-                            id: 'venue-' + index
-                            , name: venue.name
-                            , value: venue.name
-                            , type: 'checkbox'
-                            , checked: true
+                            id: 'venue-' + index,
+                            name: venue.name,
+                            value: venue.name,
+                            type: 'checkbox',
+                            checked: true
                         })
                             .change(function () {
                                 var cbox = this,
@@ -341,14 +482,15 @@
                 $("<li/>")
                     .append(
                         $("<input />").attr({
-                            id: 'venue-type-' + index
-                            , name: venue
-                            , value: venue
-                            , type: 'checkbox'
-                            , checked: true
+                            id: 'venue-type-' + index,
+                            name: venue,
+                            value: venue,
+                            type: 'checkbox',
+                            checked: true
                         })
                             .change(function () {
-                                var $this = $(this), i;
+                                var $this = $(this),
+                                    i;
                                 for (i = 0; i < venues.length; i++) {
                                     if (venues[i].type === $this.val()) {
                                         $('[name="' + venues[i].name + '"]').prop("checked", $this.prop('checked')).trigger('change');
