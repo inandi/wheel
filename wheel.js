@@ -21,7 +21,7 @@ class Wheel {
         this.$venues = $('#venues');
         this.$venueName = $('#name');
         this.$list = $('<ul/>');
-        this.$filterToggler = $('#filterToggle');
+        this.$filterToggler = this.$venues.closest('.gn--wheel-container').find('.gn--wheel-filter-toggle');
     }
 
     setup() {

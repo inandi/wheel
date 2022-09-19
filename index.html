@@ -10,32 +10,31 @@
 </head>
 
 <body>
-    <div id="venues">
-        <h1>Venues <input type="checkbox" class="gn--wheel-checkAll" checked />
-        </h1>
-        <div id="name">
+
+
+    <div class="gn--wheel-container">
+        <div id="venues">
+            <h1>Data <input type="checkbox" class="gn--wheel-checkAll" checked />
+            </h1>
+            <div id="name">
+            </div>
         </div>
-        <!-- <h2>Types <input type="checkbox" class="gn--wheel-checkAll" checked /> -->
-        <!-- </h2> -->
-        <!-- <div id="types"> -->
-        <!-- </div> -->
+        <div class="gn--wheel-filter-toggle">. . .</div>
+        <div id="wheel">
+            <canvas id="canvas" width="1000" height="600">
+            </canvas>
+        </div>
+        <div id="counter">
+        </div>
     </div>
-    <div id="filterToggle">. . .</div>
-    <div id="wheel">
-        <canvas id="canvas" width="1000" height="600">
-        </canvas>
-    </div>
-    <div id="counter">
-    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <!-- <script src="main.js"></script> -->
     <script src="wheel.js"></script>
 
     <script>
-        let configObject = {
-            fe:true
-        }
 
         var venues = [{
             "name": "1",
@@ -44,34 +43,12 @@
         }, {
             "name": "3",
         }, {
-        //     "name": "4",
-        //     "type": "number"
-        // }, {
-        //     "name": "5",
-        //     "type": "number"
-        // }, {
-        //     "name": "6",
-        //     "type": "number"
-        // }, {
-        //     "name": "7",
-        //     "type": "number"
-        // }, {
-        //     "name": "8",
-        //     "type": "number"
-        // }, {
-        //     "name": "9",
-        //     "type": "number"
-        // }, {
             "name": "10",
         }];
 
         var wheelFirstObject = {
             data: venues,
-            config: configObject,
             id: generateDynamicStringForWheelID(),
-            css: "multiple",
-            question: "Do you own a home?",
-            answers: ["Yes", "No"]
         };
         let wheelFirst = new Wheel(wheelFirstObject);
         wheelFirst.run();
