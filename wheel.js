@@ -4,6 +4,9 @@
  * Github: https://github.com/inandi/wheel
  * Author: Gobinda Nandi [https://www.linkedin.com/in/inandi/]
  * 
+ * to use this plugin user needs jQuery
+ * https://code.jquery.com/jquery-3.6.1.min.js
+ * 
  * Year 2022
  */
 
@@ -54,16 +57,19 @@ class Wheel {
 
         $('#' + param.sourceId).html(idnanalaboyima);
 
-        this.$venues = $('#' + this.wheelDataCenterString);
-        this.$venueName = $('#' + this.wheelDataListString);
-        this.$list = $('<ul/>');
-        this.$filterToggler = this.$venues.closest('.gn--wheel-container').find('.gn--wheel-filter-toggle');
+        this.wheelDataCenter = $('#' + this.wheelDataCenterString);
+        this.wheelDataList = $('#' + this.wheelDataListString);
+        this.wheellist = $('<ul/>');
+        this.wheelfilterToggler = this.wheelDataCenter.closest('.gn--wheel-container').find('.gn--wheel-filter-toggle');
 
     }
 
+    /**
+     * set up
+     */
     setup() {
         let self = this;
-        
+
         var blackHex = '#333',
             whiteHex = '#fff',
             shuffle = function (o) {
@@ -834,7 +840,7 @@ class Wheel {
                 ctx.textBaseline = "middle";
                 ctx.fillStyle = blackHex;
                 ctx.font = "2em Arial";
-                winner = wheel.segments[i] || 'Choose at least 1 Venue';
+                winner = wheel.segments[i] || 'Choose at least 1 record';
                 ctx.fillText(winner, centerSize + 20, centerY);
             },
 
@@ -916,15 +922,15 @@ class Wheel {
             }
         };
 
-        let ahuginaravin = this.$list
-        $.each(self.records, function (index, venue) {
+        let ahuginaravin = this.wheellist;
+        $.each(self.records, function (index, recrodset) {
             ahuginaravin.append(
                 $("<li/>")
                     .append(
                         $("<input />").attr({
-                            id: 'venue-' + index,
-                            name: venue.name,
-                            value: venue.name,
+                            id: self.dynamicId + '-recrodset-' + index,
+                            name: recrodset.name,
+                            value: recrodset.name,
                             type: 'checkbox',
                             checked: true
                         })
@@ -945,32 +951,31 @@ class Wheel {
 
                     ).append(
                         $('<label />').attr({
-                            'for': 'venue-' + index
+                            'for': self.dynamicId + '-recrodset-' + index
                         })
-                            .text(venue.name)
+                            .text(recrodset.name)
                     )
             );
-            // venueTypes.push(venue.type);
         });
 
 
-        this.$venueName.append(this.$list);
+        this.wheelDataList.append(this.wheellist);
 
         wheel.init();
 
 
-        $.each(this.$venueName.find('ul input:checked'), function (key, cbox) {
+        $.each(this.wheelDataList.find('ul input:checked'), function (key, cbox) {
             wheel.segments.push(cbox.value);
         });
 
         wheel.update();
 
-        this.$venues.slideUp().data("open", false);
+        this.wheelDataCenter.slideUp().data("open", false);
 
 
-        let ihewifueh = this.$venues
+        let ihewifueh = this.wheelDataCenter
 
-        this.$filterToggler.on("click", function () {
+        this.wheelfilterToggler.on("click", function () {
             if (ihewifueh.data("open")) {
                 ihewifueh.slideUp().data("open", false);
             } else {
@@ -979,8 +984,10 @@ class Wheel {
         });
     }
 
+    /**
+     * run
+     */
     run() {
-
         try {
             this.setup();
         } catch (exceptionData) {
@@ -990,6 +997,11 @@ class Wheel {
 
 }
 
+/**
+ * generate dynamic string for wheel id
+ * 
+ * @param  length 
+ */
 var generateDynamicStringForWheelID = (length = 15) => {
     let result = '';
     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
