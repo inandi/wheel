@@ -12,20 +12,10 @@
 <body>
 
 
-    <div class="gn--wheel-container">
-        <div id="venues">
-            <h1>Data <input type="checkbox" class="gn--wheel-checkAll" checked />
-            </h1>
-            <div id="name">
-            </div>
-        </div>
-        <div class="gn--wheel-filter-toggle">. . .</div>
-        <div id="wheel">
-            <canvas id="canvas" width="1000" height="600">
-            </canvas>
-        </div>
-        <div id="counter">
-        </div>
+    <div id="foo">
+    </div>
+
+    <div id="boo">
     </div>
 
 
@@ -36,7 +26,7 @@
 
     <script>
 
-        var venues = [{
+        let data = [{
             "name": "1",
         }, {
             "name": "2",
@@ -47,11 +37,34 @@
         }];
 
         var wheelFirstObject = {
-            data: venues,
+            data: data,
+            sourceId: 'foo',
             id: generateDynamicStringForWheelID(),
         };
+
+      
         let wheelFirst = new Wheel(wheelFirstObject);
         wheelFirst.run();
+
+        let de = [{
+            "name": "gobinda",
+        }, {
+            "name": "nandi",
+        }, {
+            "name": "samsung",
+        }, {
+            "name": "iphone",
+        }];
+
+        var wheelSecObject = {
+            data: de,
+            sourceId: 'boo',
+            id: generateDynamicStringForWheelID(),
+        };
+      
+        let wheelSecond = new Wheel(wheelSecObject);
+        wheelSecond.run();
+ 
     </script>
 </body>
 

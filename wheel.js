@@ -17,14 +17,53 @@ class Wheel {
      * @param  param 
      */
     constructor(param) {
+
         this.dynamicId = param.id;
-        this.$venues = $('#venues');
-        this.$venueName = $('#name');
+        this.source = param.source;
+        this.records = param.data;
+
+        this.wheelDataCenterString = this.dynamicId + '--data-center';
+        this.wheelDataCenter = $('#' + this.wheelDataCenterString);
+
+        this.wheelDataListString = this.dynamicId + '--data-list';
+        this.wheelDataList = $('#' + this.wheelDataListString);
+
+        this.wheelCanvasString = this.dynamicId + '--canvas';
+        this.wheelCanvas = $('#' + this.wheelCanvasString);
+
+        this.wheelCounterString = this.dynamicId + '--counter';
+        this.wheelCounter = $('#' + this.wheelCounterString);
+
+        let idnanalaboyima = `
+        <div class="gn--wheel-container">
+            <div id="${this.wheelDataCenterString}" class="gn--wheel-data-center">
+                <h3>
+                    Data <input type="checkbox" class="gn--wheel-checkAll" checked />
+                </h3>
+                <div id="${this.wheelDataListString}">
+                </div>
+            </div>
+            <div class="gn--wheel-filter-toggle">...</div>
+            <div class="gn--wheel-canvas-container">
+                <canvas id="${this.wheelCanvasString}" width="1000" height="600">
+                </canvas>
+            </div>
+            <div id="${this.wheelCounterString}">
+            </div>
+        </div>`;
+
+        $('#' + param.sourceId).html(idnanalaboyima);
+
+        this.$venues = $('#' + this.wheelDataCenterString);
+        this.$venueName = $('#' + this.wheelDataListString);
         this.$list = $('<ul/>');
         this.$filterToggler = this.$venues.closest('.gn--wheel-container').find('.gn--wheel-filter-toggle');
+
     }
 
     setup() {
+        let self = this;
+        
         var blackHex = '#333',
             whiteHex = '#fff',
             shuffle = function (o) {
@@ -696,7 +735,7 @@ class Wheel {
 
                 // Display RPM
                 var rpm = (wheel.angleDelta * (1000 / wheel.timerDelay) * 60) / (Math.PI * 2);
-                $("#counter").html(Math.round(rpm) + " RPM");
+                $('#' + self.wheelCounterString).html(Math.round(rpm) + " RPM");
 
             },
 
@@ -723,7 +762,7 @@ class Wheel {
             // },
 
             initCanvas: function () {
-                var canvas = $('#canvas')[0];
+                var canvas = $('#' + self.wheelCanvasString)[0];
                 canvas.addEventListener("click", wheel.spin, false);
                 wheel.canvasContext = canvas.getContext("2d");
             },
@@ -876,11 +915,10 @@ class Wheel {
                 ctx.stroke();
             }
         };
-        console.log(this.$list);
 
-        let nkcsnkcnslist = this.$list
-        $.each(venues, function (index, venue) {
-            nkcsnkcnslist.append(
+        let ahuginaravin = this.$list
+        $.each(self.records, function (index, venue) {
+            ahuginaravin.append(
                 $("<li/>")
                     .append(
                         $("<input />").attr({
@@ -942,6 +980,7 @@ class Wheel {
     }
 
     run() {
+
         try {
             this.setup();
         } catch (exceptionData) {
