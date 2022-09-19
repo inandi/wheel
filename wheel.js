@@ -12,6 +12,15 @@
 
 "use strict";
 
+/**
+ * Wheel
+ * 
+ * @param data || JSON format data e.g. [{"name": "kamalesh"},{"name": "ankita"}];
+ * @param sourceId || id of source
+ * @param counterShow || show/hide RPM meter
+ * @param wheelfilterTogglerShow || show/hide data toggle button
+ * @param dynamicId || random string using as ID of DOM
+ */
 class Wheel {
 
     /**
@@ -20,10 +29,13 @@ class Wheel {
      * @param  param 
      */
     constructor(param) {
+        let counterDisplay, wheelfilterTogglerDisplay;
 
-        this.dynamicId = param.id;
+        this.dynamicId = param.dynamicId;
         this.source = param.source;
         this.records = param.data;
+        this.counterShow = param.counterShow ?? false;
+        this.wheelfilterTogglerShow = param.wheelfilterTogglerShow ?? false;
 
         this.wheelDataCenterString = this.dynamicId + '--data-center';
         this.wheelDataCenter = $('#' + this.wheelDataCenterString);
@@ -36,24 +48,37 @@ class Wheel {
 
         this.wheelCounterString = this.dynamicId + '--counter';
         this.wheelCounter = $('#' + this.wheelCounterString);
+        this.wheelCounterStyle = '';
+
+        if (this.counterShow === true) {
+            counterDisplay = 'gn--wheel-shown';
+        } else {
+            counterDisplay = 'gn--wheel-hidden';
+        }
+
+        if (this.wheelfilterTogglerShow === true) {
+            wheelfilterTogglerDisplay = 'gn--wheel-shown';
+        } else {
+            wheelfilterTogglerDisplay = 'gn--wheel-hidden';
+        }
 
         let idnanalaboyima = `
-        <div class="gn--wheel-container">
-            <div id="${this.wheelDataCenterString}" class="gn--wheel-data-center">
-                <h3>
-                    Data <input type="checkbox" class="gn--wheel-checkAll" checked />
-                </h3>
-                <div id="${this.wheelDataListString}">
+            <div class="gn--wheel-container">
+                <div id="${this.wheelDataCenterString}" class="gn--wheel-data-center">
+                    <h3>
+                        Data <input type="checkbox" class="gn--wheel-checkAll" checked />
+                    </h3>
+                    <div id="${this.wheelDataListString}">
+                    </div>
                 </div>
-            </div>
-            <div class="gn--wheel-filter-toggle">...</div>
-            <div class="gn--wheel-canvas-container">
-                <canvas id="${this.wheelCanvasString}" width="1000" height="600">
-                </canvas>
-            </div>
-            <div id="${this.wheelCounterString}">
-            </div>
-        </div>`;
+                <div class="gn--wheel-filter-toggle ${wheelfilterTogglerDisplay}">...</div>
+                <div class="gn--wheel-canvas-container">
+                    <canvas id="${this.wheelCanvasString}" width="1000" height="600">
+                    </canvas>
+                </div>
+                <div id="${this.wheelCounterString}" class="${counterDisplay}">
+                </div>
+            </div>`;
 
         $('#' + param.sourceId).html(idnanalaboyima);
 
@@ -933,22 +958,20 @@ class Wheel {
                             value: recrodset.name,
                             type: 'checkbox',
                             checked: true
+                        }).change(function () {
+                            var cbox = this,
+                                segments = wheel.segments,
+                                i = segments.indexOf(cbox.value);
+
+                            if (cbox.checked && i === -1) {
+                                segments.push(cbox.value);
+                            } else if (!cbox.checked && i !== -1) {
+                                segments.splice(i, 1);
+                            }
+
+                            segments.sort();
+                            wheel.update();
                         })
-                            .change(function () {
-                                var cbox = this,
-                                    segments = wheel.segments,
-                                    i = segments.indexOf(cbox.value);
-
-                                if (cbox.checked && i === -1) {
-                                    segments.push(cbox.value);
-                                } else if (!cbox.checked && i !== -1) {
-                                    segments.splice(i, 1);
-                                }
-
-                                segments.sort();
-                                wheel.update();
-                            })
-
                     ).append(
                         $('<label />').attr({
                             'for': self.dynamicId + '-recrodset-' + index

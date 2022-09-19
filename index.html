@@ -11,22 +11,21 @@
 
 <body>
 
-
     <div id="foo">
     </div>
 
     <div id="boo">
     </div>
 
-
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <!-- <script src="main.js"></script> -->
     <script src="wheel.js"></script>
 
     <script>
 
-        let data = [{
+        // ++ first config for foo box ++
+
+        let firstSetData = [{
             "name": "1",
         }, {
             "name": "2",
@@ -35,18 +34,17 @@
         }, {
             "name": "10",
         }];
-
-        var wheelFirstObject = {
-            data: data,
+        let wheelFirstObject = {
+            data: firstSetData,
             sourceId: 'foo',
-            id: generateDynamicStringForWheelID(),
+            dynamicId: generateDynamicStringForWheelID(),
         };
-
-      
         let wheelFirst = new Wheel(wheelFirstObject);
         wheelFirst.run();
+        // -- first config for foo box --
 
-        let de = [{
+        // ++ second config for boo box ++
+        let secondSetData = [{
             "name": "gobinda",
         }, {
             "name": "nandi",
@@ -56,15 +54,18 @@
             "name": "iphone",
         }];
 
-        var wheelSecObject = {
-            data: de,
+        let wheelSecondObject = {
+            data: secondSetData,
             sourceId: 'boo',
-            id: generateDynamicStringForWheelID(),
+            counterShow: true,
+            wheelfilterTogglerShow: true,
+            dynamicId: generateDynamicStringForWheelID(),
         };
-      
-        let wheelSecond = new Wheel(wheelSecObject);
+
+        let wheelSecond = new Wheel(wheelSecondObject);
         wheelSecond.run();
- 
+        // -- second config for boo box --
+
     </script>
 </body>
 

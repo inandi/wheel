@@ -32,3 +32,11 @@
      margin-top: -1px;
      padding: .5em;
  }
+
+ .gn--wheel-hidden {
+     display: none;
+ }
+
+ .gn--wheel-shown {
+     display: block;
+ }
