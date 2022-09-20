@@ -46,3 +46,4 @@ wheelFirst.run();
 </div>
 ```
  
+ ![wheel](https://raw.githubusercontent.com/inandi/wheel/main/wheel.gif)
