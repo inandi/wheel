@@ -4,9 +4,9 @@
 - Dynamic spinning wheel using this plugin
 -  jquery-3.6.1.min.js [click here](https://code.jquery.com/jquery-3.6.1.min.js "click here")
 
-###How to use:　
+### How to use:　
 
-####JS code
+#### JS code
 
 ```javascript
 // ++ first config for foo box ++
@@ -74,7 +74,7 @@ wheelSecond.run();
 // -- second config for boo box --
 ```
  
-####HTML code
+#### HTML code
 
 ```html
 <div id="foo">
