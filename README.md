@@ -9,6 +9,7 @@
 ####JS code
 
 ```javascript
+// ++ first config for foo box ++
 let firstSetData = [{
     "name": "1",
 }, {
@@ -37,12 +38,49 @@ let wheelFirstObject = {
 };
 let wheelFirst = new Wheel(wheelFirstObject);
 wheelFirst.run();
+// -- first config for foo box --
+
+// ++ second config for boo box ++
+let secondSetData = [{
+    "name": "gobinda",
+}, {
+    "name": "kamalesh",
+}, {
+    "name": "swapan",
+}, {
+    "name": "ankita",
+}, {
+    "name": "moumita",
+}, {
+    "name": "lalita",
+}, {
+    "name": "babu",
+}, {
+    "name": "niva",
+}, {
+    "name": "amyio",
+}];
+
+let wheelSecondObject = {
+    data: secondSetData,
+    sourceId: 'boo',
+    counterShow: true,
+    wheelfilterTogglerShow: true,
+    dynamicId: generateDynamicStringForWheelID(),
+};
+
+let wheelSecond = new Wheel(wheelSecondObject);
+wheelSecond.run();
+// -- second config for boo box --
 ```
  
 ####HTML code
 
 ```html
 <div id="foo">
+</div>
+
+<div id="boo">
 </div>
 ```
  
