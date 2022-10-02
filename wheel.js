@@ -17,8 +17,9 @@
  * 
  * @param data || JSON format data e.g. [{"name": "kamalesh"},{"name": "ankita"}];
  * @param sourceId || id of source
- * @param counterShow || show/hide RPM meter
- * @param wheelfilterTogglerShow || show/hide data toggle button
+ * @param counterShow || show/hide RPM meter, default is FALSE
+ * @param wheelfilterTogglerShow || show/hide data toggle button, default is FALSE
+ * @param dataSetVisible || show/hide data center section, default is FALSE
  * @param dynamicId || random string using as ID of DOM
  */
 class Wheel {
@@ -29,12 +30,13 @@ class Wheel {
      * @param  param 
      */
     constructor(param) {
-        let counterDisplay, wheelfilterTogglerDisplay;
+        let counterDisplay, wheelfilterTogglerDisplay, dataCenterDisplay;
 
         this.dynamicId = param.dynamicId;
         this.source = param.source;
         this.records = param.data;
         this.counterShow = param.counterShow ?? false;
+        this.dataSetVisible = param.dataSetVisible ?? false;
         this.wheelfilterTogglerShow = param.wheelfilterTogglerShow ?? false;
 
         this.wheelDataCenterString = this.dynamicId + '--data-center';
@@ -50,6 +52,12 @@ class Wheel {
         this.wheelCounter = $('#' + this.wheelCounterString);
         this.wheelCounterStyle = '';
 
+        if (this.dataSetVisible === true) {
+            dataCenterDisplay = 'gn--data-set-shown';
+        } else {
+            dataCenterDisplay = 'gn--data-set-hidden';
+        }
+
         if (this.counterShow === true) {
             counterDisplay = 'gn--wheel-shown';
         } else {
@@ -64,7 +72,7 @@ class Wheel {
 
         let idnanalaboyima = `
             <div class="gn--wheel-container">
-                <div id="${this.wheelDataCenterString}" class="gn--wheel-data-center">
+                <div id="${this.wheelDataCenterString}" class="gn--wheel-data-center ${dataCenterDisplay}">
                     <h3>
                         Data <input type="checkbox" class="gn--wheel-checkAll" checked />
                     </h3>
