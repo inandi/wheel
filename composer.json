@@ -1,4 +1,4 @@
 {
     "name": "inandi/wheel",
-    "type": "plugin"
+    "type": "git"
 }
